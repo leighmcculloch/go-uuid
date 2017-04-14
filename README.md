@@ -13,7 +13,7 @@ go get github.com/leighmcculloch/go-uuid
 import github.com/leighmcculloch/go-uuid
 ```
 
-Packge uuid exports typing for UUIDs. Sub-packages export functions for
+Package uuid exports typing for UUIDs. Sub-packages export functions for
 generating UUIDs of different types.
 
 ### Documentation
