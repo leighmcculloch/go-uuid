@@ -3,7 +3,6 @@ package uuid
 import (
 	"encoding/hex"
 	"fmt"
-	"strings"
 )
 
 // UUID is an implementation of the UUID RFC4122 standard.
@@ -17,16 +16,27 @@ func New(b [16]byte) UUID {
 
 // Parse parses the hyphenated UUID string for a UUID.
 func Parse(s string) (UUID, error) {
-	stripped := strings.Replace(s, "-", "", -1)
-	if len(stripped) != 32 {
-		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens", s)
-	}
-	b, err := hex.DecodeString(stripped)
+	var id UUID
+	_, err := hex.Decode(id[0:4], []byte(s[0:8]))
 	if err != nil {
 		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens, %s", s, err)
 	}
-	var id UUID
-	copy(id[:], b)
+	_, err = hex.Decode(id[4:6], []byte(s[9:13]))
+	if err != nil {
+		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens, %s", s, err)
+	}
+	_, err = hex.Decode(id[6:8], []byte(s[14:18]))
+	if err != nil {
+		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens, %s", s, err)
+	}
+	_, err = hex.Decode(id[8:10], []byte(s[19:23]))
+	if err != nil {
+		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens, %s", s, err)
+	}
+	_, err = hex.Decode(id[10:16], []byte(s[24:36]))
+	if err != nil {
+		return UUID{}, fmt.Errorf("%s: invalid format, want: 32 hex, with or without hyphens, %s", s, err)
+	}
 	return id, nil
 }
 
