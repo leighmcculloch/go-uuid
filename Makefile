@@ -1,5 +1,8 @@
 test:
-	go test -v -run=. -bench=. -benchmem
+	go test ./...
+
+bench:
+	go test ./... -bench=. -benchmem
 
 build:
 	go install
