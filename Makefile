@@ -1,6 +1,7 @@
 all: test readme
 
 test:
+	go vet ./...
 	go test ./...
 
 bench:
