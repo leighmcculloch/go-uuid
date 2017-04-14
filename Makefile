@@ -1,8 +1,13 @@
+all: test readme
+
 test:
 	go test ./...
 
 bench:
-	go test ./... -bench=. -benchmem
+	go test -bench=. -benchmem
 
-build:
-	go install
+readme:
+	godocdown github.com/leighmcculloch/go-uuid > README.md
+
+setup:
+	go get github.com/davecheney/godoc2md

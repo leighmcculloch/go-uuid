@@ -1,0 +1,16 @@
+language: go
+go:
+  - tip
+  - 1.8
+
+os:
+  - linux
+
+script:
+  - go vet
+  - go test . -coverprofile=coverage-1.txt
+  - go test ./timeuuid -coverprofile=coverage-2.txt
+
+after_success:
+  - cat coverage-*.txt > coverage.txt
+  - bash <(curl -s https://codecov.io/bash)
