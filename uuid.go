@@ -15,7 +15,7 @@ func New(b [16]byte) UUID {
 	return UUID(b)
 }
 
-// Parse parses the string for a UUID for the given textuable representation.
+// Parse parses the hyphenated UUID string for a UUID.
 func Parse(s string) (UUID, error) {
 	stripped := strings.Replace(s, "-", "", -1)
 	if len(stripped) != 32 {
@@ -30,7 +30,7 @@ func Parse(s string) (UUID, error) {
 	return id, nil
 }
 
-// String returns a text hexadecimal representation of the UUID.
+// String returns a text hyphenated hexadecimal representation of the UUID.
 func (id UUID) String() string {
 	var b [36]byte
 	hex.Encode(b[0:8], id[0:4])
@@ -45,7 +45,12 @@ func (id UUID) String() string {
 	return string(b[:])
 }
 
-// Timestamp returns the integer value of the time in 100ns intervals since Oct 15, 1582.
+// Timestamp returns the integer value of the time portion of the UUID in 100ns
+// intervals since Oct 15, 1582.
+//
+// Note: All UUIDs have a time bits, but only TimeUUIDs (UUID v1) contain the
+// time in these bits, making the return value of this function relatively
+// useless for other UUIDs.
 func (id UUID) Timestamp() int64 {
 	return int64(id[0])<<24 |
 		int64(id[1])<<16 |
