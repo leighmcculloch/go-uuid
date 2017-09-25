@@ -1,7 +1,9 @@
 language: go
+
+go_import_path: 4d63.com/uuid
+
 go:
   - tip
-  - 1.8
 
 os:
   - linux

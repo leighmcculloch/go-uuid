@@ -1,7 +1,7 @@
 package timeuuid_test
 
 import (
-	"github.com/leighmcculloch/go-uuid/timeuuid"
+	"4d63.com/uuid/timeuuid"
 )
 
 func ExampleNow() {

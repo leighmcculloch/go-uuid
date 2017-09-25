@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	uuid "github.com/leighmcculloch/go-uuid"
+	"4d63.com/uuid"
 )
 
 func TestNow(t *testing.T) {

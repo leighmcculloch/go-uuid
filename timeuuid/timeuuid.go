@@ -4,7 +4,7 @@ import (
 	"crypto/rand"
 	"time"
 
-	"github.com/leighmcculloch/go-uuid"
+	"4d63.com/uuid"
 )
 
 var nodeID [6]byte

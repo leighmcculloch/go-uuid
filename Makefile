@@ -8,7 +8,7 @@ bench:
 	go test -bench=. -benchmem
 
 readme:
-	godocdown github.com/leighmcculloch/go-uuid > README.md
+	godocdown 4d63.com/uuid > README.md
 
 setup:
-	go get github.com/davecheney/godoc2md
+	go get github.com/robertkrimen/godocdown/godocdown

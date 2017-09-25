@@ -3,7 +3,7 @@ package uuid_test
 import (
 	"fmt"
 
-	"github.com/leighmcculloch/go-uuid"
+	"4d63.com/uuid"
 )
 
 func Example() {
