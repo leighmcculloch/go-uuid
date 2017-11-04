@@ -11,7 +11,7 @@ os:
 script:
   - go vet
   - go test . -coverprofile=coverage-1.txt
-  - go test ./timeuuid -coverprofile=coverage-2.txt
+  - go test ./uuidv1 -coverprofile=coverage-2.txt
 
 after_success:
   - cat coverage-*.txt > coverage.txt

@@ -1,4 +1,4 @@
-package timeuuid
+package uuidv1
 
 import (
 	"testing"
